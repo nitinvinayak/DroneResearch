@@ -10,7 +10,7 @@
 
 byte addresses[][6] = {"1Node","2Node"};
 
-unsigned char Q=78;
+
 /****************** User Config ***************************/
 /***      Set this radio as radio number 0 or 1         ***/
 bool radioNumber = 1;
@@ -34,7 +34,7 @@ struct dataStruct{
   char B=68;
   char A[10];
 }myData;
-
+unsigned char Q=78;
 void setup() {
 
   Serial.begin(115200);
@@ -84,6 +84,10 @@ if (role == 1)  {
      if (!radio.write( &myData, sizeof(myData) )){
        Serial.println(F("failed"));
      }
+     Serial.println(F("Q"));
+     if (!radio.write( &Q, sizeof(Q) )){
+       Serial.println(F("failed"));
+     }
         
     radio.startListening();                                    // Now, continue listening
     
@@ -91,7 +95,7 @@ if (role == 1)  {
     boolean timeout = false;                                   // Set up a variable to indicate if a response was received or not
     
     while ( ! radio.available() ){                             // While nothing is received
-      if (millis() - started_waiting_at > 20 ){            // If waited longer than 200ms, indicate timeout and exit while loop
+      if (micros() - started_waiting_at > 200000 ){            // If waited longer than 200ms, indicate timeout and exit while loop
           timeout = true;
           break;
       }      
@@ -100,8 +104,8 @@ if (role == 1)  {
     if ( timeout ){                                             // Describe the results
         Serial.println(F("Failed, response timed out."));
     }else{
-                                                             // Grab the response, compare, and send to debugging spew
-        radio.read( &Q, sizeof(Q) );
+                                                                // Grab the response, compare, and send to debugging spew
+        radio.read( &myData, sizeof(myData) );
         // Spew it
         Serial.print(F("Sent "));
         Serial.print("time");
@@ -116,7 +120,7 @@ if (role == 1)  {
         Serial.print(myData.B);
 
         for(int i=0;i<10;i++)
-          Serial.print(Q);
+          Serial.print(myData.A[i]);
         Serial.println();
       }
     Serial.println();
