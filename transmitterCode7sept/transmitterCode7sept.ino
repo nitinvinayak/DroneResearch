@@ -1,17 +1,3 @@
-/*
- Copyright (C) 2011 J. Coliz <maniacbug@ymail.com>
-
- This program is free software; you can redistribute it and/or
- modify it under the terms of the GNU General Public License
- version 2 as published by the Free Software Foundation.
- */
-
-/**
- * Example using Dynamic Payloads 
- *
- * This is an example of how to use payloads of a varying (dynamic) size. 
- */
-
 #include <SPI.h>
 #include "nRF24L01.h"
 #include "RF24.h"
