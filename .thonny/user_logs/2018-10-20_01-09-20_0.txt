@@ -1,0 +1,72 @@
+[
+    {
+        "editor_id": 1970889104,
+        "text_widget_class": "CodeViewText",
+        "text_widget_id": 1970890320,
+        "time": "2018-10-20T01:09:20.778202",
+        "editor_class": "Editor",
+        "sequence": "EditorTextCreated"
+    },
+    {
+        "editor_id": 1970889104,
+        "text_widget_class": "CodeViewText",
+        "text_widget_id": 1970890320,
+        "time": "2018-10-20T01:09:20.779230",
+        "editor_class": "Editor",
+        "sequence": "Open",
+        "filename": "/home/pi/img.py"
+    },
+    {
+        "text_widget_class": "CodeViewText",
+        "text_widget_id": 1970890320,
+        "index2": "2.0",
+        "time": "2018-10-20T01:09:20.779756",
+        "sequence": "TextDelete",
+        "index1": "1.0"
+    },
+    {
+        "text": "import cv2\nimport os\nimport numpy\n# import the necessary packages\nfrom picamera.array import PiRGBArray\nfrom picamera import PiCamera\nimport time\n \n#initialise the camera and grab a reference to raw camera capture \ncamera=PiCamera()\ncamera.resolution=(640,480)\nrawCapture=PiRGBArray(camera,size=(640,480))\ntime.sleep(0.1)\nwhile(1):\n \n# allow the camera to warmup\n\ttime.sleep(0.1)\n \n# grab an image from the camera\n\tcamera.capture(rawCapture, format=\"bgr\")\n\timage = rawCapture.array\n        \n# display the image on screen and wait for a keypress\n\tcv2.imshow(\"Image\", image)\n\ttime.sleep(0.5)\n\tcv2.destroyAllWindows()\n\trawCapture.truncate(0)\ncamera.close()\n\n",
+        "text_widget_id": 1970890320,
+        "text_widget_class": "CodeViewText",
+        "tags": "()",
+        "time": "2018-10-20T01:09:20.883401",
+        "sequence": "TextInsert",
+        "index": "1.0"
+    },
+    {
+        "time": "2018-10-20T01:09:21.113346",
+        "widget_id": 1983524304,
+        "widget_class": "Workbench",
+        "sequence": "<FocusIn>"
+    },
+    {
+        "text_widget_context": "shell",
+        "text_widget_id": 1970808816,
+        "index": "1.0",
+        "text": "Python 3.5.3 (/usr/bin/python3)",
+        "tags": "('welcome',)",
+        "time": "2018-10-20T01:09:21.147730",
+        "sequence": "TextInsert",
+        "text_widget_class": "ShellText"
+    },
+    {
+        "text_widget_context": "shell",
+        "text_widget_id": 1970808816,
+        "index": "1.31",
+        "text": "\n",
+        "tags": "('io',)",
+        "time": "2018-10-20T01:09:21.151396",
+        "sequence": "TextInsert",
+        "text_widget_class": "ShellText"
+    },
+    {
+        "text_widget_context": "shell",
+        "text_widget_id": 1970808816,
+        "index": "2.0",
+        "text": ">>> ",
+        "tags": "('toplevel', 'prompt')",
+        "time": "2018-10-20T01:09:21.153051",
+        "sequence": "TextInsert",
+        "text_widget_class": "ShellText"
+    }
+]
